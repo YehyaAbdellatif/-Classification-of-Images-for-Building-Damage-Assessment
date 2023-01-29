@@ -1,1 +1,9 @@
 
+os-sys - Version: 1.11.0
+numpy - Version: 1.21.6
+tensorflow - Version: 2.9.2
+keras - Version: 2.9.0
+matplotlib - Version: 3.2.2
+seaborn - Version: 0.11.2
+scikit-learn - Version: 1.0.2
+opencv-python - Version: 4.6.0.66
