@@ -1,1 +1,1 @@
-# -Classification-of-Images-for-Building-Damage-Assessment
+# Classification-of-Images-for-Building-Damage-Assessment
