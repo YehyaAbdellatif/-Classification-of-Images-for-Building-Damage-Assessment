@@ -65,7 +65,7 @@ In the current Φ-Net, we designed the following eight benchmark classification 
 6.	four-class classification for component type;
 7.	four-class classification for damage level and
 8.	four-class classification for damage type.
-9.	
+
 The proposed framework with a hierarchy-tree structure is depicted in Figure 1, where grey boxes represent the detection tasks for the corresponding attributes, white boxes within the dashed lines are possible labels of the attributes to be chosen in each task, and ellipsis in boxes represent other choices or conditions. In the detection procedure, one starts from a root leaf where recognition tasks are conducted layer by layer and node by node (grey box) until another leaf node. The output label of each node describes a structural attribute. Each structural image may have multiple attributes, i.e., one image can be categorized as being at the pixel level, concrete, damaged state, etc. In the terminology of CV, this is considered a multi-attribute (multi-label) classification problem. Given that this is a pilot study, these attributes are treated independently at this stage. More extensions such as the multi-label version of Φ-Net will be updated in future studies.
 
 The dataset exists at: https://apps.peer.berkeley.edu/phi-net/
