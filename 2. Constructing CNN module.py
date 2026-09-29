@@ -166,15 +166,18 @@ model8 = tf.keras.Sequential([
 ])
 learning_rate = 0.0001
 epochs=150
-opt= tf.keras.optimizers.Adam(learning_rate=learning_rate , decay=learning_rate/(epochs*0.5))
-model1.compile(loss='categorical_crossentropy',optimizer=opt,metrics=['accuracy'])
-model2.compile(loss='categorical_crossentropy',optimizer=opt,metrics=['accuracy'])
-model3.compile(loss='categorical_crossentropy',optimizer=opt,metrics=['accuracy'])
-model4.compile(loss='categorical_crossentropy',optimizer=opt,metrics=['accuracy'])
-model5.compile(loss='categorical_crossentropy',optimizer=opt,metrics=['accuracy'])
-model6.compile(loss='categorical_crossentropy',optimizer=opt,metrics=['accuracy'])
-model7.compile(loss='categorical_crossentropy',optimizer=opt,metrics=['accuracy'])
-model8.compile(loss='categorical_crossentropy',optimizer=opt,metrics=['accuracy'])
+# Each model needs its own optimizer: a shared one also shares the step
+# counter that drives the decay, so later models would start with a decayed LR.
+def make_opt():
+    return tf.keras.optimizers.Adam(learning_rate=learning_rate , decay=learning_rate/(epochs*0.5))
+model1.compile(loss='categorical_crossentropy',optimizer=make_opt(),metrics=['accuracy'])
+model2.compile(loss='categorical_crossentropy',optimizer=make_opt(),metrics=['accuracy'])
+model3.compile(loss='categorical_crossentropy',optimizer=make_opt(),metrics=['accuracy'])
+model4.compile(loss='categorical_crossentropy',optimizer=make_opt(),metrics=['accuracy'])
+model5.compile(loss='categorical_crossentropy',optimizer=make_opt(),metrics=['accuracy'])
+model6.compile(loss='categorical_crossentropy',optimizer=make_opt(),metrics=['accuracy'])
+model7.compile(loss='categorical_crossentropy',optimizer=make_opt(),metrics=['accuracy'])
+model8.compile(loss='categorical_crossentropy',optimizer=make_opt(),metrics=['accuracy'])
 aug = tf.keras.preprocessing.image.ImageDataGenerator(
           rescale=1./255,
           rotation_range=40,

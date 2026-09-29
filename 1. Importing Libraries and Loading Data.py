@@ -83,11 +83,21 @@ X_train5, X_val5, y_train5, y_val5 = train_test_split(X_train5, y_train5, test_s
 X_train6, X_val6, y_train6, y_val6 = train_test_split(X_train6, y_train6, test_size=0.25, random_state=42)
 X_train7, X_val7, y_train7, y_val7 = train_test_split(X_train7, y_train7, test_size=0.25, random_state=42)
 X_train8, X_val8, y_train8, y_val8 = train_test_split(X_train8, y_train8, test_size=0.25, random_state=42)
-X_val1, y_val1=X_val1/255.0,y_val1/255.0
-X_val2, y_val2=X_val2/255.0,y_val2/255.0
-X_val3, y_val3=X_val3/255.0,y_val3/255.0
-X_val4, y_val4=X_val4/255.0,y_val4/255.0
-X_val5, y_val5=X_val5/255.0,y_val5/255.0
-X_val6, y_val6=X_val6/255.0,y_val6/255.0
-X_val7, y_val7=X_val7/255.0,y_val7/255.0
-X_val8, y_val8=X_val8/255.0,y_val8/255.0
+# Only the images are rescaled; labels are one-hot and must stay 0/1.
+# Test sets get the same 1/255 scaling the training generator applies.
+X_val1=X_val1.astype('float32')/255.0
+X_val2=X_val2.astype('float32')/255.0
+X_val3=X_val3.astype('float32')/255.0
+X_val4=X_val4.astype('float32')/255.0
+X_val5=X_val5.astype('float32')/255.0
+X_val6=X_val6.astype('float32')/255.0
+X_val7=X_val7.astype('float32')/255.0
+X_val8=X_val8.astype('float32')/255.0
+X_test1=X_test1.astype('float32')/255.0
+X_test2=X_test2.astype('float32')/255.0
+X_test3=X_test3.astype('float32')/255.0
+X_test4=X_test4.astype('float32')/255.0
+X_test5=X_test5.astype('float32')/255.0
+X_test6=X_test6.astype('float32')/255.0
+X_test7=X_test7.astype('float32')/255.0
+X_test8=X_test8.astype('float32')/255.0

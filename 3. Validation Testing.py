@@ -21,7 +21,7 @@ img=upload_files()
 
 from IPython.display import Image
 from tensorflow.keras.utils import load_img
-image = load_img(img[0])
+image = load_img(img[0], target_size=(224, 224), color_mode='rgb')
 image = np.array(image)
 image=image/255.
 image = image.reshape(1,224,224,3)
@@ -34,69 +34,71 @@ val5=model5.predict(image)
 val6=model6.predict(image)
 val7=model7.predict(image)
 val8=model8.predict(image)
-val1=val1>0.5
-val2=val2>0.5
-val3=val3>0.5
-val4=val4>0.5
-val5=val5>0.5
-val6=val6>0.5
-val7=val7>0.5
-val8=val8>0.5
+# Pick the most probable class; a >0.5 threshold can leave no class selected
+# for the 3- and 4-class tasks and fall through to the last label.
+val1=np.argmax(val1[0])
+val2=np.argmax(val2[0])
+val3=np.argmax(val3[0])
+val4=np.argmax(val4[0])
+val5=np.argmax(val5[0])
+val6=np.argmax(val6[0])
+val7=np.argmax(val7[0])
+val8=np.argmax(val8[0])
 
 display(Image(img[0]))
 
-if val1[0][0]==1:
+if val1==0:
     print("Scene level: Pixel")
-elif val1[0][1]==1:
+elif val1==1:
     print("Scene level: Object")
 else:
     print("Scene level: Structure")
     
-if val2[0][0]==1:
+if val2==0:
     print("Damage State: Damaged")
 else:
     print("Damage State: Undamaged")
 
-if val3[0][0]==1:
+if val3==0:
     print("Spalling Condition: Spalling")
 else:
     print("Spalling Condition: Non-Spalling")
     
-if val4[0][0]==1:
+if val4==0:
     print("Material Type: Steel")
 else:
     print("Material Type: Other")
 
-if val5[0][0]==1:
+if val5==0:
     print("Collapse Mode: Non-Collapse")
-elif val5[0][1]==1:
+elif val5==1:
     print("Collapse Mode: Partial Collapse")
 else:
     print("Collapse Mode: Full Collapse")
 
-if val6[0][0]==1:
+if val6==0:
     print("Component Type: Beam")
-elif val6[0][1]==1:
+elif val6==1:
     print("Component Type: Column")
-elif val6[0][2]==1:
+elif val6==2:
     print('Component Type: Wall')
 else:
     print('Component Type: Else')
 
-if val7[0][0]==1:
+if val7==0:
     print("Damage Level: No Damage")
-elif val7[0][1]==1:
+elif val7==1:
     print("Damage Level: Minor Damage")
-elif val7[0][2]==1:
+elif val7==2:
     print('Damage Level: Moderate Damage')
 else:
     print('Damage Level: Heavy Damage')
 
-if val8[0][0]==1:
+if val8==0:
     print("Damage Type: No Damage")
-elif val8[0][1]==1:
+elif val8==1:
     print("Damage Type: Flexural Damage")
-elif val8[0][2]==1:
+elif val8==2:
     print('Damage Type: Shear Damage')
 else:
     print('Damage Type: Combined Damage')
