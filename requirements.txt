@@ -1,7 +1,7 @@
-numpy==1.21.6
-tensorflow==2.9.2
-keras==2.9.0
-matplotlib==3.2.2
-seaborn==0.11.2
-scikit-learn==1.0.2
-opencv-python==4.6.0.66
+# Tested with TensorFlow 2.21 / Keras 3.15 on Python 3.11.
+tensorflow>=2.16
+numpy
+scikit-learn
+matplotlib
+seaborn
+pillow
